@@ -1,4 +1,4 @@
-# Intel MacBook on Debian Linux
+# Debian Linux on Intel MacBook
 
 A two-part project for migrating Intel MacBooks from macOS to a fully
 functional Debian GNU/Linux 13 (Trixie) desktop environment.
@@ -12,13 +12,25 @@ macOS Sequoia in September 2024. Hardware from this generation — primarily
 2012 to 2019 MacBook Air and MacBook Pro models — remains mechanically
 sound but is no longer eligible for operating system security updates.
 
-Debian GNU/Linux 13 (Trixie) is a viable replacement. At idle, a configured
-Debian desktop consumes under 1GB of RAM on the same hardware that requires
-approximately 4GB under macOS Monterey. The tradeoff is a significantly more
-involved setup process, primarily due to driver availability and the absence
-of Ethernet on certain MacBook models.
+This project was developed on a 2015 MacBook Air (Intel Core i5, 8GB RAM).
+The migration was driven by one reason: macOS Monterey — the last version
+Apple supports on this hardware — had become genuinely unusable due to idle
+RAM consumption. Monterey consumes roughly 4GB of RAM at idle, leaving
+almost nothing available for actual work on an 8GB machine. The only path
+forward was a full OS migration.
 
-This project addresses that setup process end to end.
+Debian Trixie was chosen for one reason: RAM. A minimal terminal install
+uses under 500MB at idle. After the full desktop setup in Step 2, idle RAM
+rises to approximately 1GB — XFCE, NetworkManager, Bluetooth, and all
+MacBook-specific drivers included. That is still under a quarter of what
+Monterey used on the same hardware. The machine became completely usable
+again.
+
+Stability, package freshness, and long-term security updates are welcome
+bonuses. This guide was written in April 2026, when a significant number of
+Intel MacBooks from the 2013–2017 era are reaching end of Apple support. For
+users who want to keep this hardware running securely, Debian Trixie is the
+most viable path forward.
 
 ---
 
@@ -32,22 +44,27 @@ distinct phase of the migration.
 
 Intel MacBooks use Broadcom WiFi chipsets that require a proprietary driver
 not included in the Linux kernel. A fresh Debian minimal install has no
-network access and no package manager connectivity, creating a
-dependency resolution problem that cannot be solved from within the system.
+network access and no package manager connectivity — and you cannot get WiFi
+without packages you cannot download because you have no WiFi. This
+repository breaks that loop.
 
-This repository provides all 92 required packages for offline installation
-via USB, along with a step-by-step installation guide and a full dependency
-map of the build chain.
+All 92 required packages are provided for offline installation via USB,
+along with a step-by-step guide and a full dependency map of the build
+chain. If you found this project searching for how to get WiFi working on
+Debian without internet access, start here.
 
 ### Step 2 — Post-Installation Setup
 **[debian-intel-macbook-post-install](https://github.com/willardcsoriano/debian-intel-macbook-post-install)**
 
-Once network access is established, this repository provides an automated
-setup script that configures a complete daily-driver desktop. Scope includes
-the XFCE desktop environment, MacBook keyboard remapping, backlight control,
-FaceTime HD camera driver installation via DKMS, battery management, audio,
-Bluetooth, and an optional theming script that adapts the desktop aesthetic
-for users transitioning from macOS.
+Once WiFi is working you have a terminal and nothing else — no desktop, no
+browser, no keyboard shortcuts that feel familiar from macOS, no FaceTime
+camera, no brightness control. This repository fixes all of that in one
+command.
+
+The setup script configures a complete daily-driver desktop: XFCE, MacBook
+keyboard remapping, backlight control, FaceTime HD camera via DKMS, battery
+management, audio, Bluetooth, and an optional theming script for users
+transitioning from macOS.
 
 ---
 
@@ -62,3 +79,9 @@ Apple Silicon Macs (M1 and later) are not supported.
 ## License
 
 MIT
+
+---
+
+*Born out of a real offline install session on a MacBook Air in April 2026.
+Every package in the WiFi bootstrap collection was manually identified and
+verified through trial and error — sometimes a lot of error.*

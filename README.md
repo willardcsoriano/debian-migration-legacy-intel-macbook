@@ -1,4 +1,4 @@
-# Debian Linux on Intel MacBook
+# The Debian Transition: A Complete Linux Migration for Legacy Intel MacBooks
 
 A two-part project for migrating Intel MacBooks from macOS to a fully
 functional Debian GNU/Linux 13 (Trixie) desktop environment.

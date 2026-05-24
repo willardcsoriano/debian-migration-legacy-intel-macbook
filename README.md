@@ -1,4 +1,13 @@
-# The Debian Transition: A Complete Linux Migration for Legacy Intel MacBooks
+# Debian Linux Migration Guide for Legacy Intel MacBooks
+
+## Table of Contents
+
+- [Background](#background)
+- [Structure](#structure)
+  - [Step 1 — WiFi Bootstrap](#step-1-wifi-bootstrap)
+  - [Step 2 — Post-Installation Setup](#step-2-post-installation-setup)
+- [Compatibility](#compatibility)
+- [License](#license)
 
 A two-part project for migrating Intel MacBooks from macOS to a fully
 functional Debian GNU/Linux 13 (Trixie) desktop environment.
